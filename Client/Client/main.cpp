@@ -8,6 +8,9 @@
 #include "include/client.hxx"
 #include "lib/dlib/string.h"
 #include <chrono>
+#include <string>
+#include <cstring>
+#include "include/fileio.hxx"
 
 int main()
 {
@@ -22,4 +25,11 @@ int main()
     cli.close();
     u_int64_t tm2 = std::chrono::duration_cast<std::chrono::nanoseconds> (std::chrono::system_clock::now().time_since_epoch()).count();
     h::log("Time taken<nanoseconds>: " + dlib::cast_to_string(tm2 - tm1));
+
+    f::dirmap d;
+    f::CreateDirectoryTree(".");
+    for(auto i = d.begin(); i != d.end(); i++)
+    {
+        std::cout << "Directory: " << i->first << std::endl;
+    }
 }

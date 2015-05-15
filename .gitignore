@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+*.dat
+*.cfg
+Client/build
+Server/build
